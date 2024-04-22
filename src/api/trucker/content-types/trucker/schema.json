@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "truckers",
+  "info": {
+    "singularName": "trucker",
+    "pluralName": "truckers",
+    "displayName": "Trucker",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "License_Number": {
+      "type": "string"
+    },
+    "NetProfit": {
+      "type": "float"
+    },
+    "Location": {
+      "type": "json"
+    },
+    "Online": {
+      "type": "boolean"
+    },
+    "Trip": {
+      "type": "boolean"
+    },
+    "Certificate_Number": {
+      "type": "string"
+    },
+    "Tow_Transport": {
+      "type": "string"
+    },
+    "Number_Plate": {
+      "type": "string"
+    },
+    "DriveLicenceDataExpiration": {
+      "type": "string"
+    },
+    "birthdate": {
+      "type": "string"
+    }
+  }
+}

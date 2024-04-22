@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trips",
+  "info": {
+    "singularName": "trip",
+    "pluralName": "trips",
+    "displayName": "Trip"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DateStartTrip": {
+      "type": "datetime"
+    },
+    "DateEndTrip": {
+      "type": "datetime"
+    },
+    "StartPosotion": {
+      "type": "string"
+    },
+    "Destination": {
+      "type": "string"
+    },
+    "Duration": {
+      "type": "string"
+    },
+    "Client": {
+      "type": "string"
+    },
+    "Trucker": {
+      "type": "string"
+    },
+    "TruckerTow": {
+      "type": "string"
+    },
+    "CompleteTrip": {
+      "type": "boolean"
+    }
+  }
+}

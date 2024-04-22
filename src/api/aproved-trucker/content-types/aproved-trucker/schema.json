@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aproved_truckers",
+  "info": {
+    "singularName": "aproved-trucker",
+    "pluralName": "aproved-truckers",
+    "displayName": "AprovedTrucker",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstname": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "password": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "DriveLicenceDataExpiration": {
+      "type": "string"
+    },
+    "Location": {
+      "type": "json"
+    },
+    "Online": {
+      "type": "boolean"
+    },
+    "Trip": {
+      "type": "boolean"
+    },
+    "License_Number": {
+      "type": "string"
+    },
+    "Certificate_Number": {
+      "type": "string"
+    },
+    "Tow_Transport": {
+      "type": "string"
+    },
+    "Number_Plate": {
+      "type": "string"
+    },
+    "NetProfit": {
+      "type": "float"
+    }
+  }
+}

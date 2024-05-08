@@ -53,6 +53,9 @@
     },
     "NetProfit": {
       "type": "float"
+    },
+    "expo_push_token": {
+      "type": "json"
     }
   }
 }

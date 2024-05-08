@@ -4,7 +4,8 @@
   "info": {
     "singularName": "trip",
     "pluralName": "trips",
-    "displayName": "Trip"
+    "displayName": "Trip",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,9 +13,6 @@
   "pluginOptions": {},
   "attributes": {
     "DateStartTrip": {
-      "type": "datetime"
-    },
-    "DateEndTrip": {
       "type": "datetime"
     },
     "StartPosotion": {
@@ -37,6 +35,34 @@
     },
     "CompleteTrip": {
       "type": "boolean"
+    },
+    "fare": {
+      "type": "decimal"
+    },
+    "request_time_stamp": {
+      "type": "time"
+    },
+    "total_distanse": {
+      "type": "decimal"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "aproved_trucker": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::aproved-trucker.aproved-trucker"
+    },
+    "datum": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dataa.dataa"
+    },
+    "trip": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tripp.tripp",
+      "inversedBy": "trips"
     }
   }
 }

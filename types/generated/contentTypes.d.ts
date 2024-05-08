@@ -814,6 +814,7 @@ export interface ApiAprovedTruckerAprovedTrucker extends Schema.CollectionType {
     Tow_Transport: Attribute.String;
     Number_Plate: Attribute.String;
     NetProfit: Attribute.Float;
+    expo_push_token: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -851,6 +852,7 @@ export interface ApiCarCar extends Schema.CollectionType {
     CirtificateFront: Attribute.Media;
     CirtificateBack: Attribute.Media;
     CirtificateProductionYear: Attribute.Date;
+    trucker_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -878,6 +880,7 @@ export interface ApiDataaDataa extends Schema.CollectionType {
     email: Attribute.Email & Attribute.Required;
     number: Attribute.String & Attribute.Required;
     password: Attribute.String & Attribute.Required;
+    expo_push_token: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -889,6 +892,48 @@ export interface ApiDataaDataa extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::dataa.dataa',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDriverRatingDriverRating extends Schema.CollectionType {
+  collectionName: 'driver_ratings';
+  info: {
+    singularName: 'driver-rating';
+    pluralName: 'driver-ratings';
+    displayName: 'driver_rating';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    rating: Attribute.Decimal;
+    aproved_trucker: Attribute.Relation<
+      'api::driver-rating.driver-rating',
+      'oneToOne',
+      'api::aproved-trucker.aproved-trucker'
+    >;
+    rated_client: Attribute.Relation<
+      'api::driver-rating.driver-rating',
+      'oneToOne',
+      'api::dataa.dataa'
+    >;
+    feedback: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::driver-rating.driver-rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::driver-rating.driver-rating',
       'oneToOne',
       'admin::user'
     > &
@@ -933,13 +978,13 @@ export interface ApiTripTrip extends Schema.CollectionType {
     singularName: 'trip';
     pluralName: 'trips';
     displayName: 'Trip';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     DateStartTrip: Attribute.DateTime;
-    DateEndTrip: Attribute.DateTime;
     StartPosotion: Attribute.String;
     Destination: Attribute.String;
     Duration: Attribute.String;
@@ -947,12 +992,59 @@ export interface ApiTripTrip extends Schema.CollectionType {
     Trucker: Attribute.String;
     TruckerTow: Attribute.String;
     CompleteTrip: Attribute.Boolean;
+    fare: Attribute.Decimal;
+    request_time_stamp: Attribute.Time;
+    total_distanse: Attribute.Decimal;
+    price: Attribute.Decimal;
+    aproved_trucker: Attribute.Relation<
+      'api::trip.trip',
+      'oneToOne',
+      'api::aproved-trucker.aproved-trucker'
+    >;
+    datum: Attribute.Relation<'api::trip.trip', 'oneToOne', 'api::dataa.dataa'>;
+    trip: Attribute.Relation<'api::trip.trip', 'manyToOne', 'api::tripp.tripp'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::trip.trip', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::trip.trip', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTrippTripp extends Schema.CollectionType {
+  collectionName: 'tripss';
+  info: {
+    singularName: 'tripp';
+    pluralName: 'tripss';
+    displayName: 'Trips';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    trip_count: Attribute.Integer;
+    trips: Attribute.Relation<
+      'api::tripp.tripp',
+      'oneToMany',
+      'api::trip.trip'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tripp.tripp',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tripp.tripp',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -984,6 +1076,7 @@ export interface ApiTruckerTrucker extends Schema.CollectionType {
     Number_Plate: Attribute.String;
     DriveLicenceDataExpiration: Attribute.String;
     birthdate: Attribute.String;
+    expo_push_token: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1023,8 +1116,10 @@ declare module '@strapi/types' {
       'api::aproved-trucker.aproved-trucker': ApiAprovedTruckerAprovedTrucker;
       'api::car.car': ApiCarCar;
       'api::dataa.dataa': ApiDataaDataa;
+      'api::driver-rating.driver-rating': ApiDriverRatingDriverRating;
       'api::image.image': ApiImageImage;
       'api::trip.trip': ApiTripTrip;
+      'api::tripp.tripp': ApiTrippTripp;
       'api::trucker.trucker': ApiTruckerTrucker;
     }
   }

@@ -31,6 +31,9 @@
     "password": {
       "type": "string",
       "required": true
+    },
+    "expo_push_token": {
+      "type": "json"
     }
   }
 }

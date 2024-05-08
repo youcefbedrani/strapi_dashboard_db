@@ -56,6 +56,9 @@
     },
     "birthdate": {
       "type": "string"
+    },
+    "expo_push_token": {
+      "type": "json"
     }
   }
 }

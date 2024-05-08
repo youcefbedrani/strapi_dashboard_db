@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "driver_ratings",
+  "info": {
+    "singularName": "driver-rating",
+    "pluralName": "driver-ratings",
+    "displayName": "driver_rating",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rating": {
+      "type": "decimal"
+    },
+    "aproved_trucker": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::aproved-trucker.aproved-trucker"
+    },
+    "rated_client": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dataa.dataa"
+    },
+    "feedback": {
+      "type": "string"
+    }
+  }
+}

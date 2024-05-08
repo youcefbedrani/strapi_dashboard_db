@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tripss",
+  "info": {
+    "singularName": "tripp",
+    "pluralName": "tripss",
+    "displayName": "Trips",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "trip_count": {
+      "type": "integer"
+    },
+    "trips": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::trip.trip",
+      "mappedBy": "trip"
+    }
+  }
+}
